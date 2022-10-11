@@ -19,7 +19,7 @@
                         </div>
                         <div class="flex items-center flex-col">
                             <div class="flex">
-                                <a href="/Signin" class="text-sm font-medium text-primary-600 hover:underline ">Pas encore de compte ?</a>
+                                <div class="text-sm font-medium text-primary-600 hover:underline "><router-link to='/Signin'>Pas encore de compte?</router-link></div>
                             </div>
                             <a href="#" class="text-sm font-medium text-primary-600 hover:underline my-5">Mot de passe oublié ?</a>
                         </div>
@@ -49,13 +49,13 @@ export default {
 
     },   manageResults(results){
         console.log(results.data)
+        console.log(results.data['user_id'])
        
 
-      if( results.data && !results.data['error'])
+      if( results.data && results.data["user_id"])
      {
         console.log("login success");
-        localStorage.setItem("isLoggedIn","true");
-        localStorage.setItem("data_user", JSON.stringify(results.data));
+        this.$setUser(results.data);
         this.$router.replace({ path: '/' })
 
      }

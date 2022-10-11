@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ConnexionView from '../views/ConnectionView.vue'
-import ExerciceslistView from '../views/ExerciceslistView.vue'
-import ExerciceArm from '../views/ExerciceArmView.vue'
+import MyTrainingView from '../views/MyTrainingView.vue'
+import MyExerciceView from '../views/MyExerciceView.vue'
 import SignInView from '../views/SignInView.vue'
 
-import AllExercicesArmView from '../views/AllExercicesArmView.vue'
 
 const routes = [
   {
@@ -14,33 +13,29 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/connection/',
+    path: '/connection',
     name: 'connection',
     component : ConnexionView
     
   },
   {
-    path: '/signin/',
+    path: '/signin',
     name: 'signin',
     component : SignInView
     
   },
   {
-    path: '/exerciceslist/',
-    name: 'exerciceslist',
-    component : ExerciceslistView
+    path: '/mytrainingview',
+    name: 'mytrainingview',
+    component : MyTrainingView,
+    props:true
     
   },
-  {
-    path: '/allexercicesarmview',
-    name: 'allexercicesarmview',
-    component : AllExercicesArmView,
-    props :true
-    
-  },  {
-    path: '/exercice/:exercices_biceps_id',
-    name: 'ExerciceArm',
-    component: ExerciceArm,
+ 
+   {
+    path: '/exercice/:exercice_id',
+    name: 'exercice',
+    component: MyExerciceView,
     props: true
   },
 ]
