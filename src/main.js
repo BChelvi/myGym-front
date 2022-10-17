@@ -3,8 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import './assets/tailwind.css'
-import VueSelect from 'vue-next-select'
-import 'vue-next-select/dist/index.min.css'
+import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 
 const user = {
@@ -30,6 +29,12 @@ const user = {
         }
     }
 }
-  
 
-createApp(App).use(router).use(user).use(VueSelect).mount('#app')
+
+const app=createApp(App);
+
+app.component(VueNumberInput.name, VueNumberInput)
+
+
+app.use(router).use(user).mount('#app');
+

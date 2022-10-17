@@ -22,3 +22,5 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+Create a configservice.js in ./src/service with : const url= "url-to-parent-folder-of-your-api";

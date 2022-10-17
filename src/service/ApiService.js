@@ -1,12 +1,15 @@
+
+
+
+const url =require ('./configservice.js')['default'].url
 // Script qui gere les requetes ajax avec AXIOS
 
 /* eslint-disable */
 const axios = require('axios').default;
 
 
-const url= "http://localhost/my-gym-back/";
-
-
+// import url from './configservice.js';
+// console.log(url);
 
 class ApiService{
 

@@ -3,47 +3,66 @@
         <div class="flex flex-col md:flex-row md:justify-center items-center p-3 my-1">
             <h1 class="flex justify-center p-1 m-1 text-2xl font-medium text-sky-900">{{ exercice[0].title }}</h1>       
             <img class="" v-bind:src="exercice[0].img" alt="">
+            <div>Dernière performance le {{exercice[0].perf_date}}</div>
         </div>
         <div class="flex flex-col items-center bg-white rounded-3xl text-sky-900 p-2 m-2">
             <div class="flex flex-row items-center">
                 <div class="flex flex-col items-center">
-                    <div class="m-2">PERFORMANCES</div>
-                    <div class="flex justify-around items-center">
-                        <div class="mr-6">POIDS</div>
-                        <select ref="lift1" name="lift1" id="lift1" class="mx-6">
-                            <option>{{last_lifts[0]-1}}</option>
-                            <option selected="selected">{{ last_lifts[0]}}</option>
-                            <option>{{parseInt(this.last_lifts[0])+parseInt(1)}}</option>
-                        </select>
-                        <select ref="lift2" name="lift2" id="lift2" class="mx-6">
-                            <option>{{last_lifts[1]-1}}</option>
-                            <option selected="selected">{{ last_lifts[1]}}</option>
-                            <option>{{parseInt(this.last_lifts[1])+parseInt(1)}}</option>
-                        </select>
-                        <select ref="lift3" name="lift3" id="lift3" class="mx-6">
-                            <option>{{last_lifts[2]-1}}</option>
-                            <option selected="selected">{{ last_lifts[2]}}</option>
-                            <option>{{parseInt(this.last_lifts[2])+parseInt(1)}}</option>
-                        </select>
+                    <div class="my-4">POIDS</div>
+                    <div class="flex flex-wrap justify-around w-100">
+                        <div class="flex flex-col items-center">
+                            <div>Série : 1</div>
+                            <vue-number-input v-model="last_lifts[0]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 2</div>
+                            <vue-number-input v-model="last_lifts[1]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 3</div>
+                            <vue-number-input v-model="last_lifts[2]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center ">
+                            <div>Série : 4</div>
+                            <vue-number-input v-model="last_lifts[3] " :min="0" :max="200"  center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 5</div>
+                            <vue-number-input v-model="last_lifts[4]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 6</div>
+                            <vue-number-input v-model="last_lifts[5]" :min="0" :max="200"  center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        
                     </div>
-                    <div class="m-2">SERIES</div>
-                    <div class="flex justify-around items-center">
-                        <div class="mr-6">REPETITIONS</div>
-                        <select ref="reps1" name="reps1" id="reps1" class="mx-6">
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                        </select>
-                        <select ref="reps2" name="reps2" id="reps2" class="mx-6">
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                        </select>
-                        <select ref="reps3" name="reps3" id="reps3" class="mx-6">
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                        </select>
+                    <div class="mt-12 mb-6">REPETITIONS</div>
+                    <div class="flex justify-around  flex-wrap items-center mb-6">
+                        
+                        <div class="flex flex-col items-center">
+                            <div>Série : 1</div>
+                            <vue-number-input v-model="last_reps[0]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 2</div>
+                            <vue-number-input v-model="last_reps[1]" :min="0" :max="200"  center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 3</div>
+                            <vue-number-input v-model="last_reps[2]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 4</div>
+                            <vue-number-input v-model="last_reps[3]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 5</div>
+                            <vue-number-input v-model="last_reps[4]" :min="0" :max="200"  center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div>Série : 6</div>
+                            <vue-number-input v-model="last_reps[5]" :min="0" :max="200"   center controls placeholder="Small" size="small" class="m-1"></vue-number-input>
+                        </div>
                     </div>                  
                 </div>
             </div>
@@ -62,6 +81,7 @@
 
     var infos = JSON.parse(localStorage.getItem('user'));
 
+    
 
     export default{
         name: "MyExerciceView",
@@ -76,7 +96,7 @@
                 exercice:null,
                 last_lifts:null,
                 last_reps:null,
-               
+              
               
             }
         },    
@@ -87,12 +107,21 @@
             manageExercice(results){
                 this.exercice= results.data;
                 console.log(this.exercice);
-                this.last_lifts=results.data[0].lift.split(",");
-                this.last_reps=[];
+                if(!results.data[0].lift){
+                    this.last_lifts=[0,0,0,0,0,0];
+                }
+                else {this.last_lifts=results.data[0].lift.split(",");}
+                
+                if(!results.data[0].reps){
+                    this.last_reps = [0,0,0,0,0,0];
+                }
+               else{this.last_reps=results.data[0].reps.split(",");}              
             },
             addPerformance(){
-                var repet = ""+this.$refs.reps1.value+","+this.$refs.reps2.value+","+this.$refs.reps3.value+"";
-                var lifting = ""+this.$refs.lift1.value+","+this.$refs.lift.value+","+this.$refs.lift3.value+"";
+                
+               
+                var lifting = ""+this.last_lifts[0]+","+this.last_lifts[1]+","+this.last_lifts[2]+","+this.last_lifts[3]+","+this.last_lifts[4]+","+this.last_lifts[5]+"";
+                var repet = ""+this.last_reps[0]+","+this.last_reps[1]+","+this.last_reps[2]+","+this.last_reps[3]+","+this.last_reps[4]+","+this.last_reps[5]+"";
                 ApiService.search("addperformance",{user : infos['user_id'],
                                                     exercice_id : this.exercice_id,
                                                     lift : lifting,
@@ -105,9 +134,10 @@
                 if(results.data)
                 {
                     console.log(results.data);
+                    this.$router.replace({ path: '/mytrainingview' })
                 }
                 else console.log("couille dans le paté")
-            }          
+            },
         }
     }  
 
@@ -127,6 +157,9 @@ img{
     object-fit: contain;
 }
 
-
+input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+   opacity : 1;
+  }
 
 </style>

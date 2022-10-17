@@ -8,14 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@chenfengyuan/vue-number-input": "^2.0.1",
     "autoprefixer": "^10",
     "axios": "^1.1.2",
     "core-js": "^3.8.3",
     "postcss": "^8",
     "register-service-worker": "^1.7.2",
     "tailwindcss": "^3",
-    "vue": "^3.2.13",
+    "vue": "^3.2.40",
     "vue-next-select": "^2.10.4",
+    "vue-number-input": "^1.0.8",
     "vue-router": "^4.0.3",
     "vue-select": "^4.0.0-beta.5"
   },

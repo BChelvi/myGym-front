@@ -14,11 +14,10 @@
         </div>
         <div>	〉</div>
       </div>
-      <div class="flex justify-center my-2">
-        <div class="bg-white rounded px-2 py-1 text-sky-900">Routine du jour : Bras</div>
-      </div>
+    
+      <RoutineComp/>
+     
     </div>
-    <RoutineComp/>
     <footer-comp/>
   </template>
   
@@ -29,10 +28,9 @@ import RoutineComp from '../components/RoutineComp.vue'
   export default {
     name: 'MyTrainingView',
     components: {
-    FooterComp,
-    RoutineComp
-
-}
+      FooterComp,
+      RoutineComp,
+    },
 }
   </script>
   

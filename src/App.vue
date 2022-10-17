@@ -34,8 +34,9 @@
    <div class="flex flex-col bg-white hover:bg-sky-900 hover:text-white active:bg-sky-900 active:text-white text-sky-900 font-bold py-3 px-8 rounded-3xl -mt-24 text-3xl shadow-xl" v-else>
    <router-link to='connection' >Se connecter</router-link>
    </div>
+   
  </div>
- <FooterComp/>
+
   <router-view/>
 </template>
 
@@ -107,5 +108,6 @@ transform : skewY(-10deg)
   transform : skewY(10deg);
  
 }
+
 
 </style>
