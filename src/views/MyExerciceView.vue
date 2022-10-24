@@ -126,7 +126,7 @@
                                                     exercice_id : this.exercice_id,
                                                     lift : lifting,
                                                     reps : repet,
-                                                    series : 3
+                                                    
                                                 }
                 ).then(this.manageResults); 
             },

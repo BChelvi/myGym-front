@@ -5,16 +5,9 @@
         <div class="p-1">tags</div>
         <div class="p-1">tags</div>
         <div class="p-1">tags</div>
-      </div>
-      <div class="flex justify-between my-2 items-center">
-        <div>〈</div>
-        <div class="flex flex-col items-center">
-          <div>un carroussel des routines</div>
-          <div>jour_user</div>
-        </div>
-        <div>	〉</div>
-      </div>
-    
+      </div>     
+          <CarrousselRoutineComp/>
+          <div class="text-center">Jour : {{jour_user}}</div>
       <RoutineComp/>
      
     </div>
@@ -23,13 +16,25 @@
   
   <script>
 import FooterComp from '@/components/FooterComp.vue';
-import RoutineComp from '../components/RoutineComp.vue'
+import RoutineComp from '../components/RoutineComp.vue';
+import CarrousselRoutineComp from '../components/CarrousselRoutineComp.vue';
   
   export default {
+    data(){
+      return{
+        jour_user:null,
+      }
+    },
+    created(){
+      var user = JSON.parse(localStorage.getItem('user'));
+      this.jour_user= user['actual_day'];
+           
+        },
     name: 'MyTrainingView',
     components: {
       FooterComp,
       RoutineComp,
+      CarrousselRoutineComp,
     },
 }
   </script>

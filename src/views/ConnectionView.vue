@@ -31,18 +31,18 @@
             </div>
         </div>
     </section>
-    
+    <FooterComp/>
 </template>
 
 <script>
 /* eslint-disable */
-
+import FooterComp from '@/components/FooterComp.vue';
 import ApiService from '@/service/ApiService.js';
 
 export default {
   name: 'ConnectionView',
   components: { 
-    
+    FooterComp,
 },methods: {
       login(){
         ApiService.search("login",{"mail":this.$refs.email.value,"pwd":this.$refs.pwd.value}).then(this.manageResults); 

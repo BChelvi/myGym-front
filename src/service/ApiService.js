@@ -1,7 +1,7 @@
 
 
 
-const url =require ('./configservice.js')['default'].url
+import url from  "./config.service.js";
 // Script qui gere les requetes ajax avec AXIOS
 
 /* eslint-disable */
@@ -20,6 +20,7 @@ class ApiService{
         
 
     });
+    
         return results;
     }
 

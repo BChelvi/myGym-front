@@ -10,21 +10,22 @@
                     <form class="  space-y-4 md:space-y-6" action="#">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                            <input type="email" ref="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                            <input type="email" ref="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="required">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe</label>
-                            <input type="password" name="password" ref="pwd" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <input type="password" name="password" ref="pwd" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="required">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmer votre Mot de passe</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <input type="password" name="password_verify" id="password_verify" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="required">
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                  <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
-                                </div>
+                                    <div>M'inscrire en tant que coach ?</div>
+                                    <input type="checkbox" v-model="isCoach">                         
+                                </div>                                   
                             </div>
                         </div>
                         <div class="flex justify-center w-full">
@@ -35,33 +36,55 @@
             </div>
         </div>
       </section>
-      <FooTer></FooTer>
+      <FooterComp/>
 </template>
 
 <script>
 /* eslint-disable */
 
-import ApiService from '@/service/ApiService.js'
+import ApiService from '@/service/ApiService.js';
+import FooterComp from '@/components/FooterComp.vue';
 
 export default {
   name: 'SignInView',
-  components: {}
+  components: {
+    FooterComp,
+    
+  },
+  data(){
+    return {
+        isCoach:null,
+    }
+  }
 
 ,methods: {
     createAccount(){
-        ApiService.search("signin",{"mail":this.$refs.email.value,"pwd":this.$refs.pwd.value}).then(this.manageResults); 
-
+        console.log(this.isCoach);
+        if(this.verifyPassword()){
+            ApiService.search("signin",{"mail":this.$refs.email.value,"pwd":this.$refs.pwd.value,"coach": this.isCoach}).then(this.manageResults); 
+        }
     }  , manageResults(results){
         console.log(results.data)
+        console.log(results.data['user_id'])
 
-      if( results.data &&  results.data['user_id'] && !results.data['error'])
+      if( results.data &&  results.data['user_id'])
      {
-console.log("Register success");
-localStorage.setItem("isLoggedIn","true");
-localStorage.setItem("data_user", JSON.stringify(results.data));
-this.$router.replace({ path: '/' })
+        console.log("Register success");
+        this.$setUser(results.data);
+        this.$router.replace({ path: '/' })
+
      }
+     else{console.log("failure")}
     },
+    verifyPassword(){
+        var pwd = document.getElementById('password').value;
+        var pwd_verif = document.getElementById('password_verify').value;
+        if(pwd!=pwd_verif){
+            alert("Les mots de passe ne correspondent pas!");
+            return false;
+        }
+        return true;
+    }
 }
 }
 </script>

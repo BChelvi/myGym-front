@@ -22,4 +22,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-configservice.js
+config.service.js
